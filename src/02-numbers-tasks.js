@@ -51,9 +51,9 @@ function getCicleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  // return (value1 + value2) === 0 ? 0 : (value1 + value2) / 2;
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  // eslint-disable-next-line no-undef
+  return value1 + value2 === 0 ? 0 : (BigInt(value1) + BigInt(value2)) / BigInt(2);
 }
 
 /**
