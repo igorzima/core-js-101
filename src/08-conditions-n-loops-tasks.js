@@ -94,8 +94,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  if ((a < b + c) && (b < a + c) && (c < a + b)) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -131,8 +134,11 @@ function isTriangle(/* a, b, c */) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  if ((rect2.top - rect1.top) < (rect1.height) && (rect2.left - rect1.left) < (rect1.width)) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -205,8 +211,23 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  let startBracket;
+  let endBracket;
+
+  if (isStartIncluded) {
+    startBracket = '[';
+  } else {
+    startBracket = '(';
+  }
+
+  if (isEndIncluded) {
+    endBracket = ']';
+  } else {
+    endBracket = ')';
+  }
+
+  return a < b ? `${startBracket}${a}, ${b}${endBracket}` : `${startBracket}${b}, ${a}${endBracket}`;
 }
 
 
@@ -264,8 +285,25 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  let sum = 0;
+  const ccnStr = ccn.toString();
+
+  for (let i = 0; i < ccnStr.length; i += 1) {
+    let cardNum = +ccnStr[i];
+
+    if ((ccnStr.length - i) % 2 === 0) {
+      cardNum *= 2;
+
+      if (cardNum > 9) {
+        cardNum -= 9;
+      }
+    }
+
+    sum += cardNum;
+  }
+
+  return sum % 10 === 0;
 }
 
 /**
